@@ -60,7 +60,6 @@
         <me.lucko.helper.version>5.6.14</me.lucko.helper.version>
         <net.objecthunter.exp4j.version>0.4.8</net.objecthunter.exp4j.version>
         <com.github.lalyos.jfiglet.version>0.0.9</com.github.lalyos.jfiglet.version>
-        <org.junit.version>5.13.1</org.junit.version>
         <org.mockito.version>5.18.0</org.mockito.version>
         <org.projectlombok.lombok.version>1.18.38</org.projectlombok.lombok.version>
     </properties>
@@ -145,11 +144,6 @@
                 <groupId>com.github.lalyos</groupId>
                 <artifactId>jfiglet</artifactId>
                 <version>${com.github.lalyos.jfiglet.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${org.junit.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
@@ -245,11 +239,6 @@
         </dependency>
 
         <!-- TEST DEPENDENCIES -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
