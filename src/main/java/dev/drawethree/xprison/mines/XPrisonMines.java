@@ -7,6 +7,8 @@ import dev.drawethree.xprison.mines.commands.MineCommand;
 import dev.drawethree.xprison.mines.commands.impl.*;
 import dev.drawethree.xprison.mines.listener.MinesListener;
 import dev.drawethree.xprison.mines.managers.MineManager;
+import dev.drawethree.xprison.mines.packet.PacketMineManager;
+import dev.drawethree.xprison.mines.packet.PacketMineListener;
 import dev.drawethree.xprison.utils.player.PlayerUtils;
 import dev.drawethree.xprison.utils.text.TextUtils;
 import lombok.Getter;
@@ -30,7 +32,9 @@ public class XPrisonMines extends XPrisonModuleBase {
 	@Getter
 	private FileManager.Config config;
 	@Getter
-	private MineManager manager;
+        private MineManager manager;
+        @Getter
+        private PacketMineManager packetManager;
 
 	private Map<String, MineCommand> commands;
 
@@ -45,10 +49,12 @@ public class XPrisonMines extends XPrisonModuleBase {
 		super.enable();
 		this.config = this.core.getFileManager().getConfig("mines.yml").copyDefaults(true).save();
 		this.loadMessages();
-		this.manager = new MineManager(this);
-		this.manager.enable();
-		new MinesListener(this).register();
-		this.registerCommands();
+                this.manager = new MineManager(this);
+                this.manager.enable();
+                this.packetManager = new PacketMineManager(this);
+                new PacketMineListener(this.packetManager);
+                new MinesListener(this).register();
+                this.registerCommands();
 		this.enabled = true;
 	}
 
@@ -105,10 +111,10 @@ public class XPrisonMines extends XPrisonModuleBase {
 		Commands.create()
 				.handler(c -> {
 
-					if (c.args().isEmpty() && c.sender() instanceof Player) {
-						this.getCommand("help").execute(c.sender(), c.args());
-						return;
-					}
+                if (c.args().isEmpty() && c.sender() instanceof Player) {
+                        this.packetManager.openMainGUI((Player) c.sender());
+                        return;
+                }
 
 					MineCommand subCommand = this.getCommand(Objects.requireNonNull(c.rawArg(0)));
 

@@ -25,3 +25,35 @@ messages:
   mine_all_reset_success: '&6All mines were reset.'
   mine_all_reset_started: '&6Started reset of all mines.'
   mine_renamed: '&6Mine &e%mine% &6was renamed to &e%new_name%&6.'
+
+size_levels:
+  1:
+    size: 20
+    cost: 0
+  2:
+    size: 30
+    cost: 5000
+  3:
+    size: 50
+    cost: 25000
+  4:
+    size: 80
+    cost: 100000
+  5:
+    size: 120
+    cost: 250000
+  6:
+    size: 150
+    cost: 500000
+  7:
+    size: 170
+    cost: 750000
+  8:
+    size: 190
+    cost: 900000
+  9:
+    size: 195
+    cost: 975000
+  10:
+    size: 200
+    cost: 1000000
